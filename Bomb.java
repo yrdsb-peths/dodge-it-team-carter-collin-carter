@@ -14,6 +14,28 @@ public class Bomb extends Actor
      */
     public void act()
     {
-        move(-3);
+        move(-10);
+        
+        if(getX() <= 0)
+        {
+            resetBomb();
+        }
+        if(isTouching(Hero.class))
+        {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public void resetBomb()
+    {
+        int x = Greenfoot.getRandomNumber(2);
+        if(x == 0)
+        {
+            setLocation(600, 100);
+        }
+        else
+        {
+        setLocation(600, 300);
+        }
     }
 }
